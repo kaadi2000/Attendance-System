@@ -1,3 +1,9 @@
+import mysql.connector
 
 def verify_login(username, password, detail):
-    pass
+    try:
+        mysql.connector.connect(host=detail[-1],user=username,password=password)
+    except:
+        return False
+    else:
+        return True

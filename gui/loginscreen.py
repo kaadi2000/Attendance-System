@@ -13,7 +13,7 @@ def login():
     def auth():
         if verify.verify_login(user.get(), pswd.get(), detail):
             loginscreen.destroy()
-            interface.interface(detail)
+            interface.mode(detail, user.get(), pswd.get())
             sys.exit()
         else:
             Label(loginscreen, text = "Invalid Login!!", fg = "red").grid(column = 0, columnspan=2)
