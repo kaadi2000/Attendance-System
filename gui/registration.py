@@ -37,7 +37,6 @@ def register():
     submit_button = Button(register_window, text = "Submit", command = submit, font = m_font).grid(columnspan=2)
 
     register_window.resizable(False, False)
-    register_window.minsize(600, 250)
     register_window.mainloop()
 
 def saveas(name, vision, sqlip, sqlport):
