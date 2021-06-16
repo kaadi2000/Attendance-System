@@ -1,5 +1,5 @@
 import os, sys
-from gui import interface, registration
+from gui import registration, loginscreen
 
 os.chdir(os.environ['USERPROFILE'])
 
@@ -13,3 +13,6 @@ os.chdir("Attendance System/data")
 if not os.path.exists("register.txt"):
     registration.register()
     sys.exit()
+
+loginscreen.login()
+sys.exit()

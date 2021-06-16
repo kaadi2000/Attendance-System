@@ -1,10 +1,9 @@
-import tkinter, sys
+import tkinter, os, sys
 from tkinter import *
 from tkinter import filedialog, messagebox
+from shutil import copyfile
 
 def register():
-    def choose_file():
-        filename = filedialog.askopenfilename(initialdir = "/",title = "Select logo",filetypes = [('JPG files', '*.jpg'),('PNG files', '*.png')])
 
     register_window = Tk()
     register_window.title("New Registration")
@@ -25,8 +24,6 @@ def register():
     name_label  = Label(register_window, text = "Name of Organization:", font = m_font).grid(row = 0, column = 0)
     name_entry = Entry(register_window, width = 28, font = t_font, textvariable = name_var).grid(row = 0, column = 1)
 
-    logo_label = Label(register_window, text = "Logo:", font = m_font).grid(row = 1, column = 0)
-    logo_button = Button(register_window, text = "Choose File", command = choose_file, font = m_font).grid(row = 1, column = 1)
 
     vision_label = Label(register_window, text = "Vision:", font = m_font).grid(row = 2, column = 0)
     vision_entry = Entry(register_window, width = 28, font = t_font, textvariable = vision_var).grid(row = 2, column = 1)
