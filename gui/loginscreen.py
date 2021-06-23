@@ -10,6 +10,8 @@ def login():
     loginscreen.title("Login")
     detail = open("register.txt").read().split("\n")
 
+    icon = PhotoImage(file = "logo.png")
+    
     def auth():
         if verify.verify_login(user.get(), pswd.get(), detail):
             loginscreen.destroy()
@@ -44,5 +46,6 @@ def login():
     Button(loginscreen, text = "Login", command = auth,font = ("Berlin Sans FB Demi Bold", 16), bg = "green", fg = "white").grid(row = 4, column = 0, columnspan=2)
     Label(loginscreen, text= copyright_symbol+"Kumar Aditya").grid(sticky = "w")
 
+    loginscreen.iconphoto(False, icon)
     loginscreen.resizable(False, False)
     loginscreen.mainloop()

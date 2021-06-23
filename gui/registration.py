@@ -1,12 +1,13 @@
 import tkinter, os, sys
 from tkinter import *
 from tkinter import filedialog, messagebox
-from shutil import copyfile
 
 def register():
 
     register_window = Tk()
     register_window.title("New Registration")
+
+    icon = PhotoImage(file = "logo.png")
 
     name_var = StringVar()
     vision_var = StringVar()
@@ -33,6 +34,7 @@ def register():
 
     submit_button = Button(register_window, text = "Submit", command = submit, font = m_font).grid(columnspan=2)
 
+    register_window.iconphoto(False, icon)
     register_window.resizable(False, False)
     register_window.mainloop()
 
