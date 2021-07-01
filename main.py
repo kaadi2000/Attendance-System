@@ -1,9 +1,9 @@
 import os, sys
-from gui import registration, loginscreen
+from gui import registration, interface
 
 if not os.path.exists("register.txt"):
     registration.register()
     sys.exit()
 
-loginscreen.login()
+interface.mode()
 sys.exit()
