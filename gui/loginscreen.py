@@ -18,7 +18,7 @@ def login_admin():
         if verify.verify_login(user.get(), pswd.get(), detail):
             loginscreen.destroy()
             database.check(detail, user.get(), pswd.get())
-            facerecognition.facerecognition()
+            admin.admin(True, user.get(), pswd.get(), detail)
         else:
             Label(loginscreen, text = "Invalid Login!!", fg = "red").grid(column = 0, columnspan=2)
 
@@ -63,7 +63,7 @@ def login_attendance():
         if verify.verify_login(user.get(), pswd.get(), detail):
             loginscreen.destroy()
             database.check(detail, user.get(), pswd.get())
-            facerecognition
+            facerecognition.facerecognition(True, user.get(), pswd.get(), detail)
         else:
             Label(loginscreen, text = "Invalid Login!!", fg = "red").grid(column = 0, columnspan=2)
 

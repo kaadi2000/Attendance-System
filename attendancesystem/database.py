@@ -17,3 +17,18 @@ def check(detail, username, pswd):
     
     db.commit()
     db.close()
+
+def add_dept(dept_name):
+    pass
+
+def add_employ():
+    pass
+
+def view_dept():
+    pass
+
+def view_attendnce():
+    pass
+
+def search():
+    pass
