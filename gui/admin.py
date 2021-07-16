@@ -4,6 +4,8 @@ from gui import loginscreen
 from tkinter import*
 from functools import partial
 import sys
+from attendancesystem import database
+from tkinter import messagebox
 
 def login():
     loginscreen.login_admin()
@@ -21,20 +23,41 @@ def admin(mode, user, pswd, detail):
 
         def new_appartment():
             destroy()
-            global l1_nd, dept_name_l, dept_name_e
+            global l1_nd, dept_name_l, dept_name_e, dept_name_b
+
             var_dept_name = StringVar()
+
+            def add():
+                database.add_dept(var_dept_name.get(), detail[-1], user, pswd)
+                messagebox.showinfo("Add Department", "Department Successfully Added!!")
+                destroy()
+
             l1_nd = Label(admin_window, text = "Add New Department", font = ("Cambria", 20, UNDERLINE))
             l1_nd.grid(row = 4, column = 0, columnspan = 7)
-            dept_name_l = Label(admin_window, text = "Enter Department Name:", font = ("Lucida Fax", 13))
+
+            dept_name_l = Label(admin_window, text = "Enter Department Name:", font = ("Lucida Fax", 14))
             dept_name_l.grid(row = 5, column = 1, columnspan = 2, sticky = "e")
-            dept_name_e = Entry(admin_window, textvariable = var_dept_name, width = 30)
+            dept_name_e = Entry(admin_window, textvariable = var_dept_name, width = 22, font = ("", 13))
             dept_name_e.grid(row = 5, column = 3, columnspan = 2, sticky = "w")
+            dept_name_b = Button(admin_window, text = "Add", command = add, bg = "green", fg = "white", font = ("", 16, BOLD))
+            dept_name_b.grid(row = 6, column = 1, columnspan = 4)
         
         def new_employ():
             destroy()
-            global l1_ne
+            global l1_ne, new_employ_name_l, new_employ_name_e, new_employ_name_i
+
+            name = StringVar()
+            id = IntVar()
+
             l1_ne = Label(text = "New Employ", font = ("Cambria", 20, UNDERLINE))
             l1_ne.grid(row = 4, column = 0, columnspan = 7)
+
+            new_employ_name_l = Label(admin_window, text = "Enter Employ Name:", font = ("Lucida Fax", 14))
+            new_employ_name_l.grid(row = 5, column = 1, columnspan = 2, sticky = "e")
+            new_employ_name_e = Entry(admin_window, textvariable = name, width = 22, font = ("", 13))
+            new_employ_name_e.grid(row = 5, column = 3, columnspan = 2, sticky = "w")
+            new_employ_name_i = Label(admin_window, text = "Enter Employ Unique ID:", font = ("Lucida Fax", 14))
+            new_employ_name_i.grid(row = 6, column = 1, columnspan = 2, sticky = "e")
 
         def view_department():
             destroy()
@@ -60,11 +83,15 @@ def admin(mode, user, pswd, detail):
                 l1_nd.grid_remove()
                 dept_name_e.grid_remove()
                 dept_name_l.grid_remove()
+                dept_name_b.grid_remove()
             except:
                 pass
 
             try:
                 l1_ne.grid_remove()
+                new_employ_name_l.grid_remove()
+                new_employ_name_e.grid_remove()
+                new_employ_name_i.grid_remove()
             except:
                 pass
 

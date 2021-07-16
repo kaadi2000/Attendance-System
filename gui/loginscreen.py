@@ -17,7 +17,7 @@ def login_admin():
     def auth():
         if verify.verify_login(user.get(), pswd.get(), detail):
             loginscreen.destroy()
-            database.check(detail, user.get(), pswd.get())
+            database.check(detail[-1], user.get(), pswd.get())
             admin.admin(True, user.get(), pswd.get(), detail)
         else:
             Label(loginscreen, text = "Invalid Login!!", fg = "red").grid(column = 0, columnspan=2)

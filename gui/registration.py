@@ -1,9 +1,8 @@
 import tkinter, os, sys
 from tkinter import *
-from tkinter import filedialog, messagebox
+from tkinter import  messagebox
 
 def register():
-
     register_window = Tk()
     register_window.title("New Registration")
 
@@ -21,18 +20,16 @@ def register():
     m_font = ("Courier New Bold", 16)
     t_font = ("Copperplate Gothic Light",14)
 
-    name_label  = Label(register_window, text = "Name of Organization:", font = m_font).grid(row = 0, column = 0)
-    name_entry = Entry(register_window, width = 28, font = t_font, textvariable = name_var).grid(row = 0, column = 1)
+    Label(register_window, text = "Name of Organization:", font = m_font).grid(row = 0, column = 0)
+    Entry(register_window, width = 28, font = t_font, textvariable = name_var).grid(row = 0, column = 1)
 
+    Label(register_window, text = "Vision:", font = m_font).grid(row = 2, column = 0)
+    Entry(register_window, width = 28, font = t_font, textvariable = vision_var).grid(row = 2, column = 1)
 
-    vision_label = Label(register_window, text = "Vision:", font = m_font).grid(row = 2, column = 0)
-    vision_entry = Entry(register_window, width = 28, font = t_font, textvariable = vision_var).grid(row = 2, column = 1)
+    Label(register_window, text = "Enter SQL server Address:", font = m_font).grid(row = 3, column = 0)
+    Entry(register_window, width = 28, font = t_font, textvariable = sql_ip).grid(row = 3, column = 1)
 
-    sql_ip_label = Label(register_window, text = "Enter SQL server Address:", font = m_font).grid(row = 3, column = 0)
-    sql_ip_entry = Entry(register_window, width = 28, font = t_font, textvariable = sql_ip).grid(row = 3, column = 1)
-
-
-    submit_button = Button(register_window, text = "Submit", command = submit, font = m_font).grid(columnspan=2)
+    Button(register_window, text = "Submit", command = submit, font = m_font).grid(columnspan=2)
 
     register_window.iconphoto(False, icon)
     register_window.resizable(False, False)
