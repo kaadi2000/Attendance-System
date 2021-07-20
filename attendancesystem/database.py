@@ -1,4 +1,3 @@
-from tkinter.messagebox import RETRY
 import mysql.connector
 
 def check(host, username, pswd):
@@ -12,6 +11,7 @@ def check(host, username, pswd):
     db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")
     mycursor = db.cursor()
 
+    mycursor.execute("CREATE TABLE IF NOT EXISTS holidays(holiday DATETIME)")
     mycursor.execute("CREATE TABLE IF NOT EXISTS department(DEPARTMENT_NAME CHAR(20))")
     mycursor.execute("CREATE TABLE IF NOT EXISTS employ_details(EMPLOY_ID INT, DEPARTMENT_NAME CHAR(20), NAME CHAR(30), PHONE INT, EMAIL CHAR(30), ADDRESS CHAR(50))")
     mycursor.execute("CREATE TABLE IF NOT EXISTS attendance(EMPLOY_ID INT, DATE DATETIME, IN_TIME DATETIME, OUT_TIME DATETIME, REMARKS CHAR(10))")
@@ -28,34 +28,14 @@ def add_dept(dept_name,host, username, pswd):
     db.commit()
     db.close()
 
-def add_employ(host, username, pswd, *values):
+def add_employ(host, username, pswd, values):
     db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")
     mycursor = db.cursor()
 
-    mycursor.execute()
+    mycursor.execute("INSERT INTO employ_details (EMPLOY_ID , DEPARTMENT_NAME , NAME , PHONE , EMAIL , ADDRESS) VALUES (%s, %s, %s, %s, %s, %s)", (values[1], values[2], values[0], values[3], values[4], values[5]))
 
     db.commit()
     db.close()
-
-
-def view_dept(host, username, pswd):
-    db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")
-    mycursor = db.cursor()
-
-    mycursor.execute()
-
-    db.commit()
-    db.close()
-
-def view_attendnce(host, username, pswd):
-    db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")
-    mycursor = db.cursor()
-
-    mycursor.execute()
-
-    db.commit()
-    db.close()
-
 
 def search(host, username, pswd):
     db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")
@@ -65,7 +45,6 @@ def search(host, username, pswd):
 
     db.commit()
     db.close()
-
 
 def get_dept(host, username, pswd):
     db = mysql.connector.connect(host = host, user = username, password = pswd, database = "attendance_system")

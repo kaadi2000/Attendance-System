@@ -1,4 +1,4 @@
-import os, sys,gc
+import os, sys, gc
 from gui import registration, interface
 
 if not os.path.exists("register.txt"):
